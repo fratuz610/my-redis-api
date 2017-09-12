@@ -1,0 +1,18 @@
+{
+    "tz": "Australia/Sydney",
+    "timeFormat": "MMMM Do YYYY, h:mm:ss a",
+    "redis": {
+        "prefix": "my-api",
+        "maxLogItems": 200000,
+        "host": "127.0.0.1",
+        "port": 6379
+    },
+    "httpPort": 9080,
+    "admin": {
+      "username": "admin",
+      "password": "supersecure"
+    },
+    "limits": {
+        "maxMessages": 10000
+    }
+}
