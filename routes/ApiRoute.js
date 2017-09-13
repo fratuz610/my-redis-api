@@ -3,7 +3,7 @@
 var express = require('express');
 var async = require('async');
 var util = require('util');
-var bodyParser = require('body-parser';)
+var bodyParser = require('body-parser');
 
 var router = express.Router();
 
@@ -58,12 +58,12 @@ class ApiRoute {
 		if(validationRes)
 			return next(this.expressUtil.httpError(400, "Bad request: ", validationRes));
 
-		this.messageModel.queryMessages(query, (err, messageList) => {
+		this.messageModel.logMessage(req.body, (err) => {
 
 			if(err)
 				return next(this.expressUtil.httpError(500, "DB error: %s", err));
 
-			return res.json(messageList);
+			return  res.sendStatus(201);
 
 		});
 	}

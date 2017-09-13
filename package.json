@@ -2,11 +2,11 @@
   "name": "my-redis-apis",
   "main": "my-redis-apis.js",
   "dependencies": {
-    "async": "^2.0.1",
-    "body-parser": "^1.15.1",
-    "express": "^4.13.4",
-    "ioredis": "^1.15.1",
-    "validate.js": "^0.10.0"
+    "async": "^2.5.0",
+    "body-parser": "^1.18.1",
+    "express": "^4.15.4",
+    "ioredis": "^3.1.4",
+    "validate.js": "^0.11.1"
   },
   "eslintConfig": {
     "env": {

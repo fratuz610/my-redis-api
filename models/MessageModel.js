@@ -79,7 +79,7 @@ class MessageModel {
 			pipeline.hset(this.redisKeys.getMessageKey(newMessageId), "sourceId", messageObj.sourceId);
 
 			// type
-			pipeline.hset(this.redisKeys.getMessageKey(newMessageId), "type", messageObj.payload.type);
+			pipeline.hset(this.redisKeys.getMessageKey(newMessageId), "type", messageObj.type);
 			
 			// payload
 			pipeline.hset(this.redisKeys.getMessageKey(newMessageId), "payload", JSON.stringify(messageObj.payload));
@@ -91,7 +91,7 @@ class MessageModel {
 			pipeline.zadd(this.redisKeys.getMessagesBySourceKey(messageObj.sourceId), ts, newMessageId);
 
 			// messages by type
-			pipeline.zadd(this.redisKeys.getMessagesByTypeKey(messageObj.payload.type), ts, newMessageId);
+			pipeline.zadd(this.redisKeys.getMessagesByTypeKey(messageObj.type), ts, newMessageId);
 
 			// we get the cardinality of the main index 
 			pipeline.zcard(this.redisKeys.getMessagesKey());
