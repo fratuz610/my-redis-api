@@ -24,18 +24,17 @@ class MessageModel {
 
 		if(!query) query = {};
 
-		if(query.limit == undefined) query.limit = 0;
-		if(query.skip == undefined) query.skip = 0;
+		if(query.limit === undefined) query.limit = 0;
+		if(query.skip === undefined) query.skip = 0;
 
-		query.limit = Math.min(300, Math.max(10, query.limit)); // between 10 and 300 messages only
+		query.limit = Math.min(300, Math.max(5, query.limit)); // between 5 and 300 messages only
 		query.skip = Math.max(0, query.skip); // Skip >= 0
-		
 		
 		// we get the latest <limit> events from the index
 		let redisKey = this.redisKeys.getMessagesKey();
 
-		if(query.devEui)
-			redisKey = this.redisKeys.getMessagesByDeviceKey(query.devEui);
+		if(query.sourceId)
+			redisKey = this.redisKeys.getMessagesBySourceKey(query.sourceId);
 		else if(query.type)
 			redisKey = this.redisKeys.getMessagesByTypeKey(query.type);
 
